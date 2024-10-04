@@ -99,9 +99,8 @@ require('lazy').setup({
 
   { -- Adds hopping to a word
     'smoka7/hop.nvim',
-    tag = '*', -- optional but strongly recommended
+    tag = '*',
     config = function()
-      -- you can configure Hop the way you like here; see :h hop-config
       require('hop').setup { keys = 'etovxqpdygfblzhckisuran' }
     end,
   },
@@ -378,12 +377,6 @@ require('lazy').setup({
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-
-      --  Add any additional override configuration in the following tables. Available keys are:
-      --  - cmd (table): Override the default command used to start the server
-      --  - filetypes (table): Override the default list of associated filetypes for the server
-      --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
-      --  - settings (table): Override the default settings passed when initializing the server.
       local servers = {
         pyright = {},
         omnisharp = {},
