@@ -50,8 +50,8 @@ vim.keymap.set('n', '<A-j>', ':m .+1<CR>==', { desc = 'Move line up' }) -- Use a
 vim.keymap.set('n', '<A-k>', ':m .-2<CR>==', { desc = 'Move line down' }) -- Use alt + k to move lines up
 vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", { desc = 'Move lines up' }) -- Use alt + j to move lines down in visual mode
 vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", { desc = 'Move lines down' }) -- Use alt + k to move lines up in visual mode
-vim.keymap.set('n', '<C-j>', '5j', { desc = 'Move 5 lines down' }) -- Move five lines when holding ctrl
-vim.keymap.set('n', '<C-k>', '5k', { desc = 'Move 5 lines up' }) -- Move five lines when holding ctrl
+vim.keymap.set({ 'n', 'v' }, '<C-j>', '5j', { desc = 'Move 5 lines down' })
+vim.keymap.set({ 'n', 'v' }, '<C-k>', '5k', { desc = 'Move 5 lines up' })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' }) -- Go to previous diagnostic message
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' }) -- Go to next diagnostic message
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' }) -- Open error messages
