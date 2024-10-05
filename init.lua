@@ -381,7 +381,7 @@ require('lazy').setup({
         pyright = {},
         omnisharp = {},
         jsonls = {},
-        -- ts_ls = {},
+        ts_ls = {},
         -- lua_ls = {
         --   settings = {
         --     Lua = {
