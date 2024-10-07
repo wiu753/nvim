@@ -132,9 +132,14 @@ require('lazy').setup({
       local harpoon = require 'harpoon'
       harpoon:setup {}
 
-      vim.keymap.set('n', '<leader>a', function()
+      vim.keymap.set('n', '<leader>aa', function()
         harpoon:list():add()
-      end)
+      end, { desc = 'Add current buffer to Harpoon' })
+
+      vim.keymap.set('n', '<leader>ad', function()
+        harpoon:list():remove()
+      end, { desc = 'Delete current buffer from Harpoon' })
+
       vim.keymap.set('n', '<C-A-h>', function()
         harpoon:list():select(1)
       end)
