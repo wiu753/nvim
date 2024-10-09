@@ -59,6 +59,8 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('n', '<leader>w', '<cmd>w<CR>', { desc = 'Save' }) -- Save description
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', 'f', ':HopWord<CR>', { desc = 'Hop to any word' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
 
 -- NOTE: Basic Autocommands
 vim.api.nvim_create_autocmd('TextYankPost', {
