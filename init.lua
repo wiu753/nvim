@@ -560,7 +560,7 @@ require('lazy').setup({
     },
   },
 
-  'nvim-treesitter/nvim-treesitter-context',
+  -- 'nvim-treesitter/nvim-treesitter-context',
 
   -- NOTE: Add/Configure additional plugins
   require 'kickstart.plugins.indent_line',
