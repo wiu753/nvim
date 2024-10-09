@@ -136,12 +136,10 @@ require('lazy').setup({
 
       vim.keymap.set('n', '<leader>aa', function()
         harpoon:list():add()
-      end, { desc = 'Add current buffer to Harpoon' })
-
+      end, { desc = '[A]dd' })
       vim.keymap.set('n', '<leader>ad', function()
         harpoon:list():remove()
-      end, { desc = 'Delete current buffer from Harpoon' })
-
+      end, { desc = '[D]elete' })
       vim.keymap.set('n', '<C-A-h>', function()
         harpoon:list():select(1)
       end)
@@ -233,6 +231,7 @@ require('lazy').setup({
         { '<leader>w', group = '[W]orkspace' },
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>a', group = 'H[a]rpoon' },
       },
     },
   },
