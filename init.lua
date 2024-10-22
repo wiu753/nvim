@@ -532,6 +532,9 @@ require('lazy').setup({
       vim.cmd.colorscheme 'carbonfox'
       vim.cmd.hi 'Comment gui=none' -- Removes any GUI styling (like italics or bold) from comments
       vim.cmd.hi 'Visual  guifg=black guibg=white gui=none'
+      vim.cmd.hi 'LspReferenceText  guibg=#3E4452 guifg=#E06C75 gui=none'
+      vim.cmd.hi 'LspReferenceRead  guibg=#3E4452 guifg=#E06C75 gui=none'
+      vim.cmd.hi 'LspReferenceWrite guibg=#3E4452 guifg=#E06C75 gui=none'
     end,
   },
 
