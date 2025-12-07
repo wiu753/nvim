@@ -32,11 +32,12 @@ vim.opt.timeoutlen = 300 -- Decrease mapped sequence wait time, displays which-k
 vim.opt.splitright = true -- Split to the right when splitting vertically
 vim.opt.splitbelow = true -- Split below when splitting horizontally
 vim.opt.list = true -- Sets how neovim will display certain whitespace characters in the editor
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } -- Sets how neovim will display certain whitespace characters in the editor
+vim.opt.listchars = { tab = '  ', trail = '·', nbsp = '␣' } -- Sets how neovim will display certain whitespace characters in the editor
 vim.opt.inccommand = 'split' -- Preview substitutions live, as you type!
 vim.opt.cursorline = true -- Show which line your cursor is on
 vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor
 vim.opt.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim.
+vim.opt.tabstop = 4
 
 -- NOTE: Basic Keymaps
 vim.keymap.set('n', '<C-c>', '<cmd>nohlsearch<CR>') -- Clear highlights on search when pressing <C-c> in normal mode
@@ -71,6 +72,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+vim.api.nvim_set_hl(0, 'CopilotSuggestion', { fg = '#c0c0c0', italic = true })
+
 -- NOTE: Install `lazy.nvim` plugin manager
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -97,6 +100,37 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
     },
+  },
+
+  -- Autocomplete with GitHub Copilot
+  {
+    'zbirenbaum/copilot.lua',
+    cmd = 'Copilot',
+    event = 'InsertEnter',
+    config = function()
+      require('copilot').setup {
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          debounce = 75,
+          keymap = {
+            accept = '<C-M-l>',
+            next = '<C-M-j>',
+            prev = '<C-M-k>',
+            dismiss = '<C-M-h>',
+          },
+        },
+        panel = { enabled = false },
+      }
+    end,
+  },
+
+  {
+    'zbirenbaum/copilot-cmp',
+    after = { 'copilot.lua' },
+    config = function()
+      require('copilot_cmp').setup()
+    end,
   },
 
   { -- Adds hopping to a word
@@ -521,6 +555,7 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'copilot' },
         },
       }
     end,
@@ -554,6 +589,7 @@ require('lazy').setup({
       end
     end,
   },
+
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
@@ -567,6 +603,20 @@ require('lazy').setup({
       },
       indent = { enable = true, disable = { 'ruby' } },
     },
+  },
+
+  {
+    'nvimtools/none-ls.nvim',
+    dependencies = { 'nvimtools/none-ls-extras.nvim' },
+    config = function()
+      local null_ls = require 'null-ls'
+
+      null_ls.setup {
+        sources = {
+          null_ls.builtins.formatting.prettier,
+        },
+      }
+    end,
   },
 
   -- 'nvim-treesitter/nvim-treesitter-context',
