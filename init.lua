@@ -565,7 +565,7 @@ require('lazy').setup({
     'EdenEast/nightfox.nvim',
     priority = 1000,
     init = function()
-      vim.cmd.colorscheme 'carbonfox'
+      vim.cmd.colorscheme 'quiet'
       vim.cmd.hi 'Comment gui=none' -- Removes any GUI styling (like italics or bold) from comments
       vim.cmd.hi 'Visual  guifg=black guibg=white gui=none'
       vim.cmd.hi 'LspReferenceText  guibg=#3E4452 guifg=#E06C75 gui=none'
