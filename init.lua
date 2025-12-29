@@ -72,7 +72,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.api.nvim_set_hl(0, 'CopilotSuggestion', { fg = '#c0c0c0', italic = true })
+-- vim.api.nvim_set_hl(0, 'CopilotSuggestion', { fg = '#c0c0c0', italic = true })
 
 -- NOTE: Install `lazy.nvim` plugin manager
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
