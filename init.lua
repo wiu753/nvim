@@ -39,6 +39,9 @@ vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below
 vim.opt.clipboard = 'unnamedplus' -- Sync clipboard between OS and Neovim.
 vim.opt.tabstop = 4
 
+vim.cmd.colorscheme 'quiet'
+vim.cmd.hi 'Comment gui=none'
+
 -- NOTE: Basic Keymaps
 vim.keymap.set('n', '<C-c>', '<cmd>nohlsearch<CR>') -- Clear highlights on search when pressing <C-c> in normal mode
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' }) -- Diagnostic keymaps
@@ -558,19 +561,6 @@ require('lazy').setup({
           { name = 'copilot' },
         },
       }
-    end,
-  },
-
-  {
-    'EdenEast/nightfox.nvim',
-    priority = 1000,
-    init = function()
-      vim.cmd.colorscheme 'quiet'
-      vim.cmd.hi 'Comment gui=none' -- Removes any GUI styling (like italics or bold) from comments
-      vim.cmd.hi 'Visual  guifg=black guibg=white gui=none'
-      vim.cmd.hi 'LspReferenceText  guibg=#3E4452 guifg=#E06C75 gui=none'
-      vim.cmd.hi 'LspReferenceRead  guibg=#3E4452 guifg=#E06C75 gui=none'
-      vim.cmd.hi 'LspReferenceWrite guibg=#3E4452 guifg=#E06C75 gui=none'
     end,
   },
 
