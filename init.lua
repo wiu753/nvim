@@ -75,6 +75,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Set a readable color when opening diagnostics
+vim.api.nvim_set_hl(0, 'DiagnosticFloatingError', { fg = '#ff0000', bg = '#1e1e1e' })
+vim.api.nvim_set_hl(0, 'DiagnosticFloatingWarn', { fg = '#ffaa00', bg = '#1e1e1e' })
+vim.api.nvim_set_hl(0, 'DiagnosticFloatingInfo', { fg = '#00aaff', bg = '#1e1e1e' })
+vim.api.nvim_set_hl(0, 'DiagnosticFloatingHint', { fg = '#00ff00', bg = '#1e1e1e' })
+
 -- vim.api.nvim_set_hl(0, 'CopilotSuggestion', { fg = '#c0c0c0', italic = true })
 
 -- NOTE: Install `lazy.nvim` plugin manager
