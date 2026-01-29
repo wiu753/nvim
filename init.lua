@@ -612,6 +612,9 @@ require('lazy').setup({
           null_ls.builtins.formatting.prettier,
         },
       }
+      vim.api.nvim_create_user_command('TogglePrettier', function()
+        null_ls.toggle {}
+      end, {})
     end,
   },
 
