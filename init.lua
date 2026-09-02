@@ -469,6 +469,12 @@ require('lazy').setup({
         sources = {
           null_ls.builtins.formatting.prettier,
         },
+        on_attach = function(client, bufnr)
+          if vim.bo[bufnr].filetype == 'markdown' then
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+          end
+        end,
       }
       vim.api.nvim_create_user_command('TogglePrettier', function() null_ls.toggle {} end, {})
     end,
